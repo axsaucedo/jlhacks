@@ -635,3 +635,17 @@ section[name="footer"] p {
 	padding: 0;
 	margin: 0;
 }
+
+#player-wrapper {
+    position: fixed;
+    z-index: -99;
+    filter: brightness(0.2);
+    -webkit-filter: brightness(0.2);
+    background: black;
+}
+
+#player {
+    position: fixed;
+    z-index: -99;
+    display: none;
+}
