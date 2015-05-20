@@ -1,146 +1,551 @@
-<!DOCTYPE html>
-<!-- saved from url=(0019)http://lahacks.com/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0">
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JLHacks | Hacking the Retail Industry.</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+   
+    <script src="js/vendor/jquery-11.min.js"></script> 
+    <script src="js/vendor/modernizr.js"></script>
+    
+    <script>
+    	$(document).ready(function() {
+		    $(document).scroll(function(){
+		        t = (100 - $(this).scrollTop())/100;
+		        if (t<0) {
+		        	t=0;
+		        	$('#nav').addClass("scroll")
+		        } else {
+			        $('#nav').removeClass("scroll")
+		        }
+		    })
+		});
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="HackPartners">
+		$(function() {
+		  $('select').change(function(){
+		    $("#width_tmp").html($('select option:selected').text());
+		    $(this).width($("#width_tmp").width()+2); 
+		  });
+		});
+		
+		$(document).ready(function(){
+		
+			$('.details').hide();
+		
+		    $(".click").click(function(){
+		        $(this).next('.details').slideToggle();
+		        $(this).toggleClass('selected');
+		    });
+		});
+		
+		$(function() {
+		  $('a[href*=#]:not([href=#])').click(function() {
+		  	var addressValue = $(this).attr("href");
+		  	
+		  	if (!(addressValue == '#panel2-1' || addressValue == '#panel2-2' || addressValue == '#panel2-3')) {
+		  
+		    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+		      var target = $(this.hash);
+		      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+		      if (target.length) {
+		        $('html,body').animate({
+		          scrollTop: (target.offset().top - 60)
+		        }, 1000);
+		        return false;
+		      }
+		    }
+		    
+		    }
+		  });
+		});
+    </script>
+  </head>
+  <body>
+  
+  	<section name="nav" id="nav">
+  		<div class="row">
+  			<div class="large-3 columns">
+  				<a href="#header"><img src="img/logos/hackathon-logo-white.png" alt="logo-w"></a>
+  			</div>
+  			<div class="large-9 columns">
+  				<ul>
+  					<li><a href="#about">About</a></li>
+  					<li><a href="#schedule">Schedule</a></li>
+  					<li><a href="#organisers">Organisers</a></li>
+  					<li><a href="#sponsors">Sponsors</a></li>
+  					<li><a href="#mentors">Mentors</a></li>
+  					<li><a class="button" style="margin: -13px -13px -13px -13px;" href="#map">Apply Now</a></li>
+  				</ul>  			
+  			</div>
+  		</div>
+  	</section>
 
-    <!-- Facebook Metatags -->
-    <meta property="og:title" content="JLHacks by John Lewis" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://jlhacks.com" />
-    <meta property="og:image" content="http://jlhacks.com/img/index/favicon.jpg" />
-    <meta property="og:description" content="JLHacks - Innovating the retail industry." />
-    <!-- Twitter Metatags -->
-    <meta name="twitter:card" content="JLHacks">
-    <meta name="twitter:site" content="@JLHacks">
-    <meta name="twitter:title" content="JLHacks by John Lewis">
-    <meta name="twitter:description" content="JLHacks - Innovating the retail industry.">
-    <meta name="twitter:image" content="http://jlhacks.com/img/index/favicon.jpg">
+    <script>
+    var tag = document.createElement('script');
+    tag.src = "http://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    var player;
+    function onYouTubePlayerAPIReady() {
+      
+      var VIDEO_ID = 'RNO15HPhQIU';
 
-    <!-- Custom GRAYSCALE CSS -->
-    <link href="css/grayscale.css" rel="stylesheet">
+      player = new YT.Player('player', {
+          height: window.screen.height*1.3,
+          width: window.screen.width*2,
+          playerVars: { 
+              'autoplay': 1, 
+              'controls': 0, 
+              'loop': 1,
+              'autohide':1,
+              'wmode':'opaque', 
+              'showinfo' : 0,
+              'showsearch' : 0,
+              'enablejsapi' : 1,
+              'start': 50,
+              'vq': 'hd1080',
+              'playlist': VIDEO_ID,
+          },
+          videoId: VIDEO_ID,
+          events: {
+              'onReady': onPlayerReady
+          }
+      });
+    }
 
-    <!-- Custom CSS -->
-    <link href="css/index.css" rel="stylesheet">
+    function onPlayerReady(event) {
+      $("#player").show();
+      event.target.mute();
+      $("#player").css("margin-left", -window.screen.width*.5);
+    }
 
-	<link rel="stylesheet" type="text/css" href="css/trainhackers.css">
-	<title>HackPartners - Innovating the retail industry.</title></head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    </script>
+    <style>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header" style="position: relative">
-                <a class="navbar-brand page-scroll" style="background-color: black; height: 130px; width: 130px; position: absolute; border-radius: 200px; padding-top: 50px; padding-right: 20px; margin-top:-20px" href="#page-top">
-                    <span><img src="img/logos/hackathon-logo-white.png" style="width: 100px;" /></span>
-                </a>
+#player-wrapper {
+    position: fixed;
+    z-index: -99;
+    filter: brightness(0.2);
+    -webkit-filter: brightness(0.2);
+    background: black;
+}
+
+#player {
+    position: fixed;
+    z-index: -99;
+    display: none;
+}
+    </style>
+
+    <div id="player-wrapper">
+        <div id="player"></div>
+    </div>
+    
+    <section name="header">
+    	<div class="row">
+    		<div class="large-12 columns">
+    			<img class="medium-6 medium-offset-3 img img-responsive" src="img/logos/hackathon-logo-white.png" alt="logo-w">
+
+    			<h2><br>13th - 14th June.</h2>
+                <hr/>
+                <h4>The first hackathon held at Lewis Oxford Circus store
+                <br>
+                targeted to innovate payment technology</h4>
+
+                <br>
+    			<center>
+    				<p><a href="" class="button">Apply Now</a></p>
+    			</center>
+    		</div>
+    	</div>
+    </section>
+    
+    <section name="about">
+    	<div class="row">
+    		<div class="large-12 columns">
+    			<h1>About JLHacks</h1>
+    			<hr/>
+				<p>
+                    JLHacks is the largest impact UK hackathon targeted for <a href="https://twitter.com/search?q=%23HacktheRails&src=tyah">Retail Innovation</a>! An unforgettable experience where 50 of the best developers from all around Europe will change the world! Located in the heart of London, this hackathon will allow these young bright minds to hack inside the John Lewis stores to create and build products that will revolutionize the retail industry!
+                </p>
+                <br>
+                <p>
+                    Startups, apps, prototypes will be created, and presented in front of CEOs, investors, serial entrepreneurs and evangelists - all with the objective of becoming the 2015 JLHacks champion! With attendees from UK, Russia, Romania, France, Poland, Czech Republic together with many other European countries, this hackathon will certainly promise a unique experience!
+                </p>
+                <br>
+                <p>
+                    Crazy? Definitely! Impossible? Not even close! Many individuals rocked our past events, creating mind blowing and revolutionary concepts! Some of our past events include <a href="http://hacktrain.com">The HackTrain</a>, <a href="http://uk.startupbus.com/">Startup Bus UK 2014</a>, <a href="http://moscow.startupweekend.org/">Startup Weekend Moscow</a>, <a href="https://twitter.com/startuphacksco/">Startup Hacks</a>.
+                </p>
+                <br>
+                <p>
+                    Thanks to our strong partnership with one of the largest retailers in the UK, John Lewis, attendees will be able to hack away inside their stores in central London!
+                </p>
+    		</div>
+    	</div>
+    </section>
+    
+    <section name="about2">
+    	<div class="row">
+    		<div class="large-2 columns lefta" style="background-image:url('http://uanews.org/sites/default/files/story-images/google%20glass%20b-roll_mov-2_2.jpg');background-size:cover;background-position-x:-250px;background-position-y:0px;">
+    			<div class="cover">Gallery</div>
+    		</div>
+    		<div class="large-8 columns content">
+    			<div class="row">
+    				<div class="large-4 columns">
+    					<center>
+    						<p class="number">36</p>
+    						<p class="title">Hours</p>
+    						<p>To conceive, build and launch products that will revolutionize the retail industry.</p>
+    					</center>
+    				</div>
+    				<div class="large-4 columns">
+                        <center>
+        					<p class="number">50</p>
+    						<p class="title">Participants</p>
+    						<p>The best developers, designers and industry experts in Europe.</p>
+                        </center>
+    				</div>
+    				<div class="large-4 columns">
+                        <center>
+        					<p class="number">12</p>
+    						<p class="title">Projects</p>
+    						<p>Innovations created by the top minds in Europe that will revolutionize payment technology.</p>
+                        </center>
+    				</div>
+    			</div>
+    		</div>
+            <div class="large-2 columns righta" style="background-image:url('http://medicalbuy.net/wp-content/uploads/2010/10/iPad-for-doctor-to-check-xray-med-apps.jpg');background-size:cover;background-position-x:-200px;background-position-y:0px;">
+                <div class="cover">Video</div>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#studies">Sponsors</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#studies">Organizers</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll btn btn-default" href="#studies">Apply now</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-<div id="particles-js"><iframe width="100%" height="100%" src="http://www.zynaps.com/site/experiments/hexagon.html" frameborder="0" allowfullscreen></iframe></div>
-
-<section class="aboutSection fluid-container">
-	<div class="container">
-		<div class="logo">
-			<img style="max-width: 50%; margin-top: 50px" src="img/logos/hackathon-logo-white.png"/>
-      <br><br><br>
-			<div class="text">
-				<p>Innovating the retail industry.</p>
-			</div>
-		</div>
-		<div class="mainLinks">
-			<a class="applyButton" href="http://jobs.bloomberg.com/go/All-Software-Engineering-Jobs/510100/" target="_blank">Apply now</a>
-		</div>
-	</div>
-</section>
-
-<div class="main-container">
-    <section class="faqSection fluid-container">
-      <div class="">
-            <div id="about">
-                <div>
-                    <h2>An Experience Like No Other.</h2>
-                    <p>
-                        JLHacks is the first ever train hackathon in Europe targeted to <a href="https://twitter.com/search?q=%23HacktheRails&src=tyah">Retail Innovation</a>! An unforgettable experience where 60 of the best developers from all around Europe will change the world! Located in the heart of London, this hackathon will allow these young bright minds to hack inside the John Lewis stores to create and build products that will revolutionize the retail industry!
-                    </p>
-                    <p>
-                        Startups, apps, prototypes will be created, and presented in front of CEOs, investors, serial entrepreneurs and evangelists - all with the objective of becoming the 2015 JLHacks champion! With attendees from UK, Russia, Romania, France, Poland, Czech Republic together with many other European countries, this hackathon will certainly promise a unique experience!
-                    </p>
-                    <p>
-                        Crazy? Definitely! Impossible? Not even close! Many individuals rocked our past events, creating mind blowing and revolutionary concepts! Some of our past events include <a href="http://hacktrain.com">The HackTrain</a>, <a href="http://uk.startupbus.com/">Startup Bus UK 2014</a>, <a href="http://moscow.startupweekend.org/">Startup Weekend Moscow</a>, <a href="https://twitter.com/startuphacksco/">Startup Hacks</a>.
-                    </p>
-                    <p>
-                        Thanks to our strong partnership with one of the largest retailers in the UK, John Lewis, attendees will be able to hack away inside their stores in central London!
-                    </p>
+    	</div>
+    </section>
+    
+    <section name="schedule">
+    	<div class="row">
+    		<div class="large-12 columns">
+    			<h1>Schedule</h1>
+    			<hr/>
+    			<ul class="tabs" data-tab role="tablist">
+					<li class="tab-title active" role="presentational" ><a href="#panel2-1" role="tab" tabindex="0" aria-selected="true" controls="panel2-1">Day 1</a></li>
+					<li class="tab-title" role="presentational" ><a href="#panel2-2" role="tab" tabindex="0"aria-selected="false" controls="panel2-2">Day 2</a></li>
+				</ul>
+				<div class="tabs-content">
+					<section role="tabpanel" aria-hidden="false" class="content active" id="panel2-1">
+						<h3>June 13, 2015</h3>
+						
+						<div class="row">
+							<div class="large-12 columns">
+								<div class="row click">
+									<div class="large-3 columns">
+										<p class="time">8:30 - 9:00</p>
+									</div>
+									<div class="large-9 columns">
+										<p class="title">Breakfast</p>
+										<p class="subtitle"><strong>Fuel</strong> for champions</p>
+									</div>
+								</div>
+								<div class="row details">
+									<div class="large-3 columns">
+										<p class="venue">Venue: Lunch Room</p>
+									</div>
+									
+									<div class="large-9 columns">
+										<p class="cont">Attendees will be welcomed with breakfast to allow them to gather the energy they will need to rock the weekend.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-12 columns">
+								<div class="row click">
+									<div class="large-3 columns">
+										<p class="time">9:00 - 10:30</p>
+									</div>
+									<div class="large-9 columns">
+										<p class="title">Welcome speech, overview & APIs</p>
+										<p class="subtitle"><strong>John Lewis</strong> - CEO, John Lewis
+                                        <br>
+                                        <strong>+5</strong> Main Speakers
+                                        <br>
+									</div>
+								</div>
+								<div class="row details">
+									<div class="large-3 columns">
+										<p class="venue">Venue: Auditorium</p>
+									</div>
+									
+									<div class="large-9 columns">
+										<p class="cont">
+                                            <p class="subtitle"><strong>John Lewis</strong> - CEO, John Lewis
+                                            <br>
+                                            <strong>CTO Dude</strong> - CTO, John Lewis
+                                            <br>
+                                            <strong>CIO Dude</strong> - CIO, John Lewis
+                                            <br>
+                                            <strong>Stripe Bro</strong> - Employee, Stripe
+                                            <br>
+                                            <strong>Paypal Guy</strong> - Employee, Paypal
+                                            <br>
+                                            <strong>Twilio Man</strong> - Employee, Twilio
+                                            </p>
+                                        </p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-12 columns">
+								<div class="row click">
+									<div class="large-3 columns">
+										<p class="time">10:30 - 12:00</p>
+									</div>
+									<div class="large-9 columns">
+										<p class="title">Teams are formed</p>
+										<p class="subtitle"><strong>Pitches</strong> by participants
+                                        <br>
+                                        <strong>Voting</strong> for top ideas
+                                        <br>
+                                        <strong>Teams</strong> are formed
+                                        </p>
+									</div>
+								</div>
+								<div class="row details">
+									<div class="large-3 columns">
+										<p class="venue">Venue: Auditorium 1</p>
+									</div>
+									
+									<div class="large-9 columns">
+										<p class="cont">Participants will pitch their ideas with the crowd. The top ideas will then be selected by the participants through voting. Finally teams will be formed around the top chosen ideas.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <div class="row click">
+                                    <div class="large-3 columns">
+                                        <p class="time">12:00 - 13:00</p>
+                                    </div>
+                                    <div class="large-9 columns">
+                                        <p class="title">Hackathon Begins!</p>
+                                        <p class="subtitle"><strong>30 hours</strong> left to innovate
+                                    </div>
+                                </div>
+                                <div class="row details">
+                                    <div class="large-3 columns">
+                                        <p class="venue">Venue: Auditorium 1</p>
+                                    </div>
+                                    
+                                    <div class="large-9 columns">
+                                        <p class="cont">As soon as teams are finalized, they can jump to action and get started creating revolutionary products.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <div class="row click">
+                                    <div class="large-3 columns">
+                                        <p class="time">13:00 - 14:00</p>
+                                    </div>
+                                    <div class="large-9 columns">
+                                        <p class="title">Lunch is served</p>
+                                        <p class="subtitle"><strong>Food</strong> to refuel
+                                    </div>
+                                </div>
+                                <div class="row details">
+                                    <div class="large-3 columns">
+                                        <p class="venue">Venue: Lunch Room</p>
+                                    </div>
+                                    
+                                    <div class="large-9 columns">
+                                        <p class="cont">Lunch is served to allow the teams to refuel before jumping into the innovation process.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <div class="row click">
+                                    <div class="large-3 columns">
+                                        <p class="time">14:00 - 17:00</p>
+                                    </div>
+                                    <div class="large-9 columns">
+                                        <p class="title">Mentorship Sessions</p>
+                                        <p class="subtitle"><strong>Experts</strong> providing knowledge
+                                    </div>
+                                </div>
+                                <div class="row details">
+                                    <div class="large-3 columns">
+                                        <p class="venue">Venue: Work Room</p>
+                                    </div>
+                                    
+                                    <div class="large-9 columns">
+                                        <p class="cont">Mentors and experts in the industry will provide their skills to accelerate projects, and ensure that they all solve problems that need to be solved.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+						
+					</section>
+					<section role="tabpanel" aria-hidden="true" class="content" id="panel2-2"><h3>June 14, 2015</h3>
+                        
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <div class="row click">
+                                    <div class="large-3 columns">
+                                        <p class="time">9:30am - 11:30am</p>
+                                    </div>
+                                    <div class="large-9 columns">
+                                        <p class="title">Welcome speech & overview</p>
+                                        <p class="subtitle"><strong>Andrew Yang</strong> - CEO, Microsoft</p>
+                                    </div>
+                                </div>
+                                <div class="row details">
+                                    <div class="large-3 columns">
+                                        <p class="venue">Venue: Auditorium 1</p>
+                                    </div>
+                                    
+                                    <div class="large-9 columns">
+                                        <p class="cont">This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. The Standardistas are lecturers in interactive design. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. The Standardistas are lecturers in interactive design</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <div class="row click">
+                                    <div class="large-3 columns">
+                                        <p class="time">9:30am - 11:30am</p>
+                                    </div>
+                                    <div class="large-9 columns">
+                                        <p class="title">Welcome speech & overview</p>
+                                        <p class="subtitle"><strong>Andrew Yang</strong> - CEO, Microsoft</p>
+                                    </div>
+                                </div>
+                                <div class="row details">
+                                    <div class="large-3 columns">
+                                        <p class="venue">Venue: Auditorium 1</p>
+                                    </div>
+                                    
+                                    <div class="large-9 columns">
+                                        <p class="cont">This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. The Standardistas are lecturers in interactive design. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. The Standardistas are lecturers in interactive design</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <div class="row click">
+                                    <div class="large-3 columns">
+                                        <p class="time">9:30am - 11:30am</p>
+                                    </div>
+                                    <div class="large-9 columns">
+                                        <p class="title">Welcome speech & overview</p>
+                                        <p class="subtitle"><strong>Andrew Yang</strong> - CEO, Microsoft</p>
+                                    </div>
+                                </div>
+                                <div class="row details">
+                                    <div class="large-3 columns">
+                                        <p class="venue">Venue: Auditorium 1</p>
+                                    </div>
+                                    
+                                    <div class="large-9 columns">
+                                        <p class="cont">This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. The Standardistas are lecturers in interactive design. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. The Standardistas are lecturers in interactive design</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+				</div>
+    		</div>
+    	</div>
+    </section>
+    
+    <section name="sponsors">
+    	<div class="row">
+    		<div class="large-12 columns">
+    			<h1>Sponsors</h1>
+    			<hr/>
+    			<p>Great companies supporting great retail innovators</p>
+    			
+    			<p class="tier headline">Headline</p>
+    			<center>
+    				<a href="#">Contact us to learn about our sponsorship packages</a>
+    			</center>	
+    			
+    			<p class="tier core">Core Sponsors</p>
+    		</div>
+    	</div>
+    </section>
+    
+    <section name="organisers">
+        <div class="row">
+            <div class="large-12 columns">
+                <h1>Organisers</h1>
+                <hr/>
+                
+                <div class="row">
+                    <div class="medium-6 columns">
+                        <center>
+                        <img src="img/sponsors/hackpartners-logo-white-square.png"/>
+                        <p class="name">Hack Partners</p>
+                        <p class="position">World class hackathon organizers for corporates. Hack Partners has ran over 50 projects with corporations and governmental bodies.</p>
+                        </center>
+                    </div>
+                    <div class="medium-6 columns">
+                        <center>
+                        <img src="img/sponsors/jlabs-logo-white.png"/>
+                        <p class="name">JLabs</p>
+                        <p class="position">Leading innovation, John Lewis Labs supports and leads several  projects to promote innovation.</p>
+                        </center>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="clear"></div>
     </section>
     
-    <section id="apply" class="container content-section text-center" style="width: 100%">
-        <div id="type-form-parent" class="row">
-            <h1>APPLY NOW!</h1>
-            <div class="col-md-12" style="background: white; border-radius: 30px; padding: 10px 10px 10px 10px; height: 700px">
-                <iframe id="typeform-full" width="100%" height="100%" frameborder="0" src="" style="display:none;"></iframe>
-            </div>
-        </div>
+    <section name="map">
+    	<div class="row">
+    		<div class="large-3 columns">
+    			<div class="box">
+    				<p class="location">John Lewis Store, Oxford Circus, London</p>
+    				<p class="date">4-6 September 2015</p>
+    				<p class="link"><a href="">https://www.amee.org/conferences/amee-2015</a></p>
+    			</div>
+    		</div>
+    	</div>	
     </section>
-</div>
-
-
-  <script type="text/javascript" src="js/external/jquery.js"></script>
-  <!--<script type="text/javascript" src="js/trainhackers/particles.min.js"></script>-->
-	<script type="text/javascript" src="js/trainhackers/main.js"></script>
-
-    <script src="js/external/bootstrap.min.js"></script>
-    <script src="js/external/jquery.easing.min.js"></script>
-    <script src="js/index/grayscale.js"></script>
-
-    <!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//localhost:8888/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', 1]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="//localhost:8888/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
-
-</body></html>
+    
+    <section name="apply">
+    	<div class="row">
+    		<div class="large-12 columns">
+    			<p>Hi, I am a 
+    			<select>
+                    <option value="">[CHOOSE]</option>
+    				<option value="">Developer</option>
+    				<option value="">Designer</option>
+    				<option value="">Idea Generator</option>
+    				<option value="">News Representative</option>
+    			</select> 
+    			<span id="width_tmp"></span>
+    			and I am interested in attending JLHacks</p>
+    			
+    			<a class="applybtn">Apply Now</a>
+    		</div>
+    	</div>	
+    </section>
+        
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
