@@ -255,7 +255,7 @@ section[name="about2"] .lefta:hover > .cover, section[name="about2"] .righta:hov
 }
 
 section[name="about2"] .content {
-	background-color: #212739;
+	background-color: #000;
 	height: 310px;
 	color: #ffffff;
 }
@@ -271,7 +271,7 @@ section[name="about2"] .content p {
 	padding: 0;
 	margin: 0;
 	font-family: 'Raleway', sans-serif;
-	color: #388bc1;
+	color: #fff;
 }
 
 section[name="about2"] .content .number {
@@ -316,12 +316,12 @@ section[name="schedule"] .tabs .tab-title a {
 	padding: 3px 0;
 	text-align: center;
 	font-family: 'Raleway', sans-serif;
-	background-color: #212739;
+	background-color: #000;
 	color: #ffffff;
 }
 
 section[name="schedule"] .tabs .tab-title.active a {
-	background-color: #256a97;
+	background-color: #C0C0C0;
 	border: 0;
 	outline: 0;
 }
@@ -403,7 +403,7 @@ section[name="schedule"] h3 {
 }
 
 section[name="organisers"] {
-	background-color: #212739;
+	background-color: #000;
 	padding: 50px 0;
 }
 
@@ -538,9 +538,9 @@ section[name="mentors"] h3 {
 
 section[name="map"] {
 	height: 350px;
-	background-image: url("http://www.footiemap.com/country/scotland/maps/glasgow.jpg");
+	background-image: url('../img/images/jlhacks-map.png');
 	background-size: cover;
-	background-position-y: -250px;
+	background-position: center;
 }
 
 section[name="map"] .box {
