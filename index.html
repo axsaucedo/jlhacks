@@ -12,104 +12,6 @@
     <script src="js/vendor/jquery-11.min.js"></script> 
     <script src="js/vendor/modernizr.js"></script>
     
-    <script>
-        var tag = document.createElement('script');
-        tag.src = "http://www.youtube.com/player_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        function onYouTubePlayerAPIReady() {
-          
-          var VIDEO_ID = 'RNO15HPhQIU';
-
-          player = new YT.Player('player', {
-              height: window.screen.height*1.3,
-              width: window.screen.width*2,
-              playerVars: { 
-                  'autoplay': 1, 
-                  'controls': 0, 
-                  'loop': 1,
-                  'autohide':1,
-                  'wmode':'opaque', 
-                  'showinfo' : 0,
-                  'showsearch' : 0,
-                  'enablejsapi' : 1,
-                  'start': 50,
-                  'vq': 'hd1080',
-                  'playlist': VIDEO_ID,
-              },
-              videoId: VIDEO_ID,
-              events: {
-                  'onReady': onPlayerReady
-              }
-          });
-        }
-
-        function onPlayerReady(event) {
-          $("#player").show();
-          event.target.mute();
-          $("#player").css("margin-left", -window.screen.width*.5);
-        }
-
-    	$(document).ready(function() {
-		    $(document).scroll(function(){
-		        t = (100 - $(this).scrollTop())/100;
-		        if (t<0) {
-		        	t=0;
-		        	$('#nav').addClass("scroll")
-		        } else {
-			        $('#nav').removeClass("scroll")
-		        }
-		    })
-		});
-
-		$(function() {
-		  $('select').change(function(){
-		    $("#width_tmp").html($('select option:selected').text());
-		    $(this).width($("#width_tmp").width()+2); 
-		  });
-		});
-		
-		$(document).ready(function(){
-		
-			$('.details').hide();
-		
-		    $(".click").click(function(){
-		        $(this).next('.details').slideToggle();
-		        $(this).toggleClass('selected');
-		    });
-		});
-		
-		$(function() {
-		  $('a[href*=#]:not([href=#])').click(function() {
-		  	var addressValue = $(this).attr("href");
-		  	
-		  	if (!(addressValue == '#panel2-1' || addressValue == '#panel2-2' || addressValue == '#panel2-3')) {
-		  
-		    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-		      var target = $(this.hash);
-		      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-		      if (target.length) {
-		        $('html,body').animate({
-		          scrollTop: (target.offset().top - 60)
-		        }, 1000);
-		        return false;
-		      }
-		    }
-		    
-		    }
-		  });
-		});
-
-        $(function() {
-            $('#typeform-full').attr("src", "https://hackpartners.typeform.com/to/QoEWho");
-
-            $('#typeform-full').on('load', function() {
-                setTimeout(function() { $('#typeform-full').show() }, 5000);
-            });
-        });
-    </script>
   </head>
   <body>
   
@@ -135,7 +37,7 @@
         <div id="player"></div>
     </div>
     
-    <section name="header" style="background-color: black">
+    <section name="header">
     	<div class="row">
     		<div class="large-12 columns">
     			<img class="medium-6 medium-offset-3 img img-responsive" src="img/logos/hackathon-logo-white.png" alt="logo-w">
@@ -716,6 +618,108 @@
     <script src="js/foundation.min.js"></script>
     <script>
       $(document).foundation();
+    </script>
+
+
+    <script>
+        var tag = document.createElement('script');
+        tag.src = "http://www.youtube.com/player_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubePlayerAPIReady() {
+          
+          var VIDEO_ID = 'jNti6yZ5oeY';
+
+          player = new YT.Player('player', {
+              height: window.screen.height*1.3,
+              width: window.screen.width*2,
+              playerVars: { 
+                  'autoplay': 1, 
+                  'controls': 0, 
+                  'loop': 1,
+                  'autohide':1,
+                  'wmode':'opaque', 
+                  'showinfo' : 0,
+                  'showsearch' : 0,
+                  'enablejsapi' : 1,
+                  'start': 5,
+                  'vq': 'hd1080',
+                  'playlist': VIDEO_ID,
+                  'iv_load_policy': 3
+              },
+              videoId: VIDEO_ID,
+              events: {
+                  'onReady': onPlayerReady
+              }
+          });
+        }
+
+        function onPlayerReady(event) {
+          $("#player").show();
+          event.target.mute();
+          $("#player").css("margin-left", -window.screen.width*.5);
+        }
+
+
+        $(document).ready(function() {
+            $(document).scroll(function(){
+                t = (100 - $(this).scrollTop())/100;
+                if (t<0) {
+                    t=0;
+                    $('#nav').addClass("scroll")
+                } else {
+                    $('#nav').removeClass("scroll")
+                }
+            })
+        });
+
+        $(function() {
+          $('select').change(function(){
+            $("#width_tmp").html($('select option:selected').text());
+            $(this).width($("#width_tmp").width()+2); 
+          });
+        });
+        
+        $(document).ready(function(){
+        
+            $('.details').hide();
+        
+            $(".click").click(function(){
+                $(this).next('.details').slideToggle();
+                $(this).toggleClass('selected');
+            });
+        });
+        
+        $(function() {
+          $('a[href*=#]:not([href=#])').click(function() {
+            var addressValue = $(this).attr("href");
+            
+            if (!(addressValue == '#panel2-1' || addressValue == '#panel2-2' || addressValue == '#panel2-3')) {
+          
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+              if (target.length) {
+                $('html,body').animate({
+                  scrollTop: (target.offset().top - 60)
+                }, 1000);
+                return false;
+              }
+            }
+            
+            }
+          });
+        });
+
+        $(function() {
+            $('#typeform-full').attr("src", "https://hackpartners.typeform.com/to/QoEWho");
+
+            $('#typeform-full').on('load', function() {
+                setTimeout(function() { $('#typeform-full').show() }, 5000);
+            });
+        });
     </script>
   </body>
 </html>
